@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seqform.FXMLDocumentController">
+   <children>
+      <AnchorPane prefHeight="541.0" prefWidth="781.0">
+         <children>
+            <MenuBar layoutX="7.0" layoutY="8.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <SplitPane layoutX="14.0" layoutY="25.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="781.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="189.0" prefWidth="697.0">
+                     <children>
+                        <TextField fx:id="InputSequence" alignment="TOP_LEFT" prefHeight="162.0" prefWidth="679.0" promptText="Enter input nucleic acid sequence here..." AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="28.0" />
+                        <TitledPane animated="false" layoutX="6.0" text="Input Nucleic Acid Sequence">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="137.0" />
+                          </content>
+                        </TitledPane>
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+            <TitledPane animated="false" layoutY="235.0" prefHeight="310.0" prefWidth="342.0" text="format options" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="235.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="330.0">
+                     <children>
+                        <MenuButton fx:id="numberOfBaseButton" layoutX="16.0" layoutY="14.0" mnemonicParsing="false" text="number of bases per line">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="60 bases (default)" />
+                            <MenuItem mnemonicParsing="false" text="change the number of bases per line">
+                                 <graphic>
+                                    <TextField fx:id="numberOfBases" prefHeight="25.0" prefWidth="258.0" promptText="enter the desired number of bases per line " />
+                                 </graphic>
+                              </MenuItem>
+                          </items>
+                        </MenuButton>
+                        <MenuButton fx:id="spaceButton" layoutX="19.0" layoutY="58.0" mnemonicParsing="false" text="spaces between bases">
+                          <items>
+                            <MenuItem mnemonicParsing="false" onAction="#onRemoveSpace" text="no spaces between bases (default )" />
+                            <MenuItem mnemonicParsing="false" onAction="#onAddSpaces" text="add spaces to groups of 10 bases" />
+                          </items>
+                        </MenuButton>
+                        <MenuButton fx:id="caseButton" layoutX="14.0" layoutY="108.0" mnemonicParsing="false" text="uppercase or lowercase">
+                          <items>
+                            <MenuItem mnemonicParsing="false" onAction="#onLowerCase" text="nucleotides in lowercase (default)" />
+                            <MenuItem mnemonicParsing="false" onAction="#onUpperCase" text="nucleotides in uppercase" />
+                          </items>
+                        </MenuButton>
+                        <MenuButton fx:id="rowIndexButton" layoutX="14.0" layoutY="148.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="323.0" text="starting number of sequences on each row">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#onShowRowIndex" text="show starting number of sequence base on the left side of each row " />
+                              <MenuItem mnemonicParsing="false" onAction="#onHideIndex" text="hide starting number of sequence base on the left side of each row " />
+                           </items>
+                        </MenuButton>
+                        <Button fx:id="Submit" mnemonicParsing="false" onAction="#handleSubmitButton" text="Submit" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="8.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </TitledPane>
+            <TitledPane animated="false" layoutX="344.0" layoutY="235.0" prefHeight="306.0" prefWidth="432.0" text="Formatted Sequence" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="344.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="235.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="264.0" prefWidth="310.0">
+                     <children>
+                        <TextArea fx:id="formattedSequence" prefHeight="198.0" prefWidth="438.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0" />
+                        <Button layoutX="22.0" layoutY="213.0" mnemonicParsing="false" onAction="#handleShowOriginalFormat" text="Show Original Preformatted sequence" AnchorPane.bottomAnchor="34.0" />
+                        <CheckBox layoutX="22.0" layoutY="248.0" mnemonicParsing="false" onAction="#onSelectPreferredSettings" text="Remember Preferred Settings" AnchorPane.bottomAnchor="9.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </TitledPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
